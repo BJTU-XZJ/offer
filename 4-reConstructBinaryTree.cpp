@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<iostream>
 #include<stdlib.h>
+#include<vector>
 using namespace std;
 struct TreeNode
 {
@@ -11,7 +12,7 @@ struct TreeNode
 };
 TreeNode* ConstructCore(int* startPreorder, int* endPreorder, int* startInorder, int* endInorder)
 {
-    //Ç°Ğò±éÀúµÄµÚÒ»¸öÊı×ÖÊÇ¸ù½áµãµÄÖµ
+    //å‰åºéå†çš„ç¬¬ä¸€ä¸ªæ•°å­—æ˜¯æ ¹ç»“ç‚¹çš„å€¼
     int rootValue = startPreorder[0];
     TreeNode* root;
     root = (struct TreeNode*)malloc(sizeof(struct TreeNode));
@@ -29,7 +30,7 @@ TreeNode* ConstructCore(int* startPreorder, int* endPreorder, int* startInorder,
             return NULL;
         }
     }
-    //ÔÚÖĞĞò±éÀúÖĞÕÒµ½¸ù½áµãµÄÖµ
+    //åœ¨ä¸­åºéå†ä¸­æ‰¾åˆ°æ ¹ç»“ç‚¹çš„å€¼
     int* rootInorder = startInorder;
     while(rootInorder<=endInorder && *rootInorder!=rootValue)
         ++rootInorder;
@@ -69,7 +70,7 @@ TreeNode* reConstructBinaryTree(vector<int> pre, vector<int> vin)
     int rootValue = pre[0];
     TreeNode* node = new TreeNode(rootValue);
     int pos = 0;
-    for(pos; pos<vin_size; p++)
+    for(pos; pos<vin_size; pos++)
     {
         if(vin[pos]==rootValue)
             break;
